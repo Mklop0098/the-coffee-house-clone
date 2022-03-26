@@ -1,0 +1,27 @@
+.menu-banner {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.menu-banner img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.menu-container .product-item {
+  width: 39%;
+}
+
+@media screen and (min-width: 992px) {
+  .menu-container .product-item {
+    width: 21%;
+  }
+  .menu-banner {
+    width: 50%;
+  }
+}
