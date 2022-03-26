@@ -1,0 +1,13 @@
+.product {
+    position: relative;
+    width: 100%;
+
+}
+.product-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+}

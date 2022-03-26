@@ -1,0 +1,45 @@
+
+.carousel {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF7E6;
+    position: relative;
+}
+.carousel-inner  {
+    width: 100%;
+    display: flex;
+ 
+}
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 99;
+}
+
+img.carousel-item--active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.buttonPrev {
+    position: absolute;
+    top: 47%;
+    left: 0;
+    background-color: rgb(236, 56, 110);
+    z-index: 100;
+}
+.buttonNext {
+    position: absolute;
+    top: 47%;
+    right: 0;
+    background-color: rgb(236, 56, 110);
+    z-index: 100;
+}
+
+img#appear {
+    transition:  0.4s linear;
+}

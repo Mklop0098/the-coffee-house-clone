@@ -1,0 +1,54 @@
+.experience {
+    width: 100%;
+    background-color: #FFF7E6;
+    margin-top: 8%;
+    height: 120%;
+}
+
+.experience .container { 
+    display: flex;
+    flex-direction: column;
+    width: 79%;
+    margin: auto;
+    position: relative;
+    margin-bottom: 12%;
+}
+.experience .container .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+.experience .container .title span {
+    font-size: 28px;
+    color: black;
+    padding: 0 0 0 7px;
+ 
+}
+
+.experience .container .content .content-title {
+    border-left: 4px #fd7a00 solid ;
+    padding-left: 14px;
+    margin-bottom: 20px;
+    margin: 24px 0 24px 15px;
+}
+
+.experience .container .content .content-title > span {
+    font-size: 25px;
+    color: black;
+}
+
+.experience .container .content .content-menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.experience .container .content .content-menu .menu-item {
+    width: calc(100% /3);
+    height: auto
+}
+
+#last-content {
+    margin-bottom: 180px;
+}
