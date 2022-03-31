@@ -89,4 +89,3 @@ export enum BUTTON_TYPE {
     "OUTLINE" = 3,
     "CONTAINED" = 4
 }
-
