@@ -1,40 +1,21 @@
 // import { useState, useEffect } from "react"
-import "./style.css"
-type ButtonInfo = {
-    items : Inform
-}
+import { Button } from "../../types";
+import "./style.css";
 
-export type Inform = {
-    title: string
-    backgroundColor: string
-    width: string
-    height: string
-    color: string
-    fontSize: string
-    borderRadius: string
-    border: string
-}
+export const ButtonReact: React.FC<Button> = (props) => {
+  const buttonType = props;
 
-
-
-
-export const Button:React.FC<ButtonInfo> = (props) => {
-    const {items} = props
-    console.log(items)
-    return (
-        <div id="button">
-            <button
-                style={{
-                    width: items.width,
-                    height: items.height,
-                    backgroundColor: items.backgroundColor,
-                    color: items.color,
-                    fontSize: items.fontSize,
-                    borderRadius: items.borderRadius,
-                    border: items.border
-
-                }}
-            >{items.title}</button>
-        </div>
-    )
-}
+  return (
+    <div>
+      {buttonType.type === 1 ? (
+        <button className="contained-hover">{buttonType.name}</button>
+      ) : buttonType.type === 2 ? (
+        <button>goodbye</button>
+      ) : buttonType.type === 3 ? (
+        <button></button>
+      ) : (
+        <button></button>
+      )}
+    </div>
+  );
+};

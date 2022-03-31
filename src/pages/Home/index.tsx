@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { Brand } from "../../components/Brand";
-import { ContenCarousel } from "../../components/ContenCarousel";
+// import { ContenCarousel } from "../../components/ContenCarousel";
 import { BlogSection } from "../../components/Blog";
-import { Menu } from "../../components/Menu";
+// import { Menu } from "../../components/Menu";
 import { Product } from "../../types";
 import { products as fakeProducts } from "../../data/product";
 import { ProductItem } from "../../components/ProductItem";
@@ -31,8 +31,8 @@ export const HomePage = () => {
         </div>
       </section>
 
-      {/* <Brand />
-      <ContenCarousel /> */}
+      <Brand />
+      {/* <ContenCarousel /> */}
       <BlogSection />
     </Fragment>
   );

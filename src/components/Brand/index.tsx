@@ -1,54 +1,43 @@
-// import { useState, useEffect } from "react"
-import { Button, Inform } from "../Button";
-import "./style.css"
-import pic1 from "./img/pic1.jpg"
-import pic2 from "./img/pic2.jpg"
+import { useState, useEffect } from "react";
+import { BrandContents } from "../../types";
+import { brands as fakeBrands } from "../../data";
+import { ButtonReact } from "../Button";
+import "./style.css";
 
-const button: Inform = {
-    title: "Tìm hiểu thêm",
-    backgroundColor: "#EA8025",
-    width: "70%",
-    height: "45px",
-    color: "white",
-    fontSize: "16px",
-    borderRadius: "10px",
-    border: "none"
-}
+export const Brand: React.FC = () => {
+  const [brands, setBrands] = useState<BrandContents[]>([]);
 
-export const Brand:React.FC = () => {
+  useEffect(() => {
+    setBrands(fakeBrands);
+  }, []);
 
-    return (
-        <div id="Brand">
-            <div className = "container">
-                <div className="brand1">
-                    <div className="brand-content">
-                        <span>Trà Sen Nhãn Sum Vầy</span>
-                        <p>Thức uống mang hương vị của nhãn, của sen, của trà Oolong đầy thanh mát cho tất cả các thành viên trong dịp Tết này. An lành, thư thái và đậm đà chính là những gì The Coffee House mong muốn gửi trao đến bạn và gia đình.</p>
-                        <Button 
-                            items={button}
-                        />
-                    </div>
-                    <div className="brand-img">
-                        <img src = {pic1}/>
-                    </div>
-                </div>
-                <div className="brand1">
-                    <div className="brand-img2">
-                        <img src = {pic2}/>
-                    </div>
-                    <div className="brand-content2">
-                        <span>Trà Dưa Đào Sung Túc</span>
-                        <p>Vị thơm ngọt của Dưa lưới và đào tươi chua chua, ngọt ngọt trên nền trà Oolong trứ danh cùng lớp foam cheese mỏng nhẹ vị mặn mặn tạo nên sự cân bằng cho thức uống, sẽ đem đến cho bạn, gia đình và bạn bè những giai điệu tươi vui cho mùa xuân mới.
-
-</p>
-                        <Button 
-                            items={button}
-                        />      
-
-                    </div>
-                </div>
+  return (
+    <div id="brand">
+      <div className="container">
+        {brands.map((topic) => (
+          <div className="brand__content">
+            <div className="content">
+              <h2>{topic.title}</h2>
+              <p>{topic.desc}</p>
+              {/* <button
+                style={{
+                  backgroundColor: button.backgroundColor,
+                  width: button.width,
+                  height: button.height,
+                  color: button.color,
+                  fontSize: button.fontSize,
+                  border: button.border,
+                  borderRadius: button.borderRadius,
+                }}
+              >
+                {topic.buttonTitle}
+              </button> */}
+              <ButtonReact type={1} name="Tìm hiểu thêm" />
             </div>
-        </div>
-        
-    )
-}
+            <img className="content__img" src={topic.img} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};

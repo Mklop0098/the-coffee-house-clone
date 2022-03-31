@@ -1,0 +1,17 @@
+.contained-hover {
+  width: 85%;
+  background-color: #ea8025;
+  border: none;
+  color: #fff7e6;
+  height: 44px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.contained-hover:hover {
+  background-color: #fff7e6;
+  border: 2px #ea8025 solid;
+  color: #ea8025;
+  cursor: pointer;
+}

@@ -1,112 +1,157 @@
 #header {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
 }
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-#header #up-header {
-
-    display: flex;
-    flex-direction: row;
-    height: 42px;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    position: relative;
-}
-#header #up-header .list_nav a{
-    display: flex;
-    font-size: 13px;
-    color: #00000099;
-    text-decoration: none;
+.list_nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
 }
 
-#header #up-header a:hover {
-    color: orange;
-    transition: 0.4s ease-in-out;
+.list_nav__content {
+  display: flex;
+  flex-direction: row;
 }
 
-#header #up-header .list_nav img {
-    margin: 0 5px 0 0;
+.list_nav .list_nav__content a {
+  display: flex;
+  font-size: 13px;
+  color: #00000099;
+  text-decoration: none;
 }
 
-#header #up-header > div {
-    padding: 0 46px;
+#header .list_nav .list_nav__content a:hover {
+  color: orange;
+  transition: 0.4s ease-in-out;
 }
 
-#down-header {
-
-    width: 100%;
+#header .list_nav img {
+  margin: 0 5px 0 0;
+  height: 22px;
+  width: 18px;
 }
 
-#container {
-    display: flex;
-    flex-direction: row;
-    height: 60px;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    position: absolute ;
-    z-index: 999;
-    background-color: rgba(255,255,255,0.8);
-    /* position: relative; */
+.down-header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
-#container .title {
-    position: absolute;
-    left: 10%;
-    font-weight: 500;
+.down-header .title {
+  color: black;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+#down-header-item-a {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.down-header-topic h4 {
+  color: black;
+  margin: 0;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.down-header-topic {
+  padding: 19px 16px;
+}
+
+#down-header-item-b {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  width: 250px;
+  top: 100px;
+  z-index: 100;
+}
+
+@media screen and (min-width: 320px) {
+  .down-header .title {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 375px) {
+  .down-header .title {
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 425px) {
+  .down-header .title {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .down-header .title {
     font-size: 20px;
+  }
+  .list_nav__content {
+    padding: 0 25px;
+  }
 }
-#container .title a {
-    color: black;
-}
-
-#container .nav-down {
+@media screen and (min-width: 1024px) {
+  #down-header-item-a {
     display: flex;
-    flex-direction: row;
-}
+  }
 
-#container .nav-down a {    
-    font-size: 16px;
-    font-weight: 500;
-    margin: 0 16px; 
-    height: 60px;
-    color: black;
-    line-height: 60px;
-    
-}
-#container .nav-down a:hover {
-    color: orange;
-    transition: 0.4s ease-in-out;
-}
- 
+  #down-header-item-b {
+    /* display: none; */
+  }
 
-.sub {
+  .down-header-topic {
+    padding: 19px 20px;
+  }
+  .down-header-topic h4 {
+    font-size: 14px;
+  }
+  .ti-menu {
     display: none;
-    background-color: rgba(255, 255, 255, 0.9);
-    position: absolute;
-    width: 100%;
-    top: 60px;
-    /* display: flex; */
-    flex-direction: row;
-    padding: 2% 0;
-    justify-content: center;
-    z-index: 1000;
-    height: 265%;
+  }
+  .down-header .title {
+    color: black;
+    font-size: 20px;
+    font-weight: 800;
+    padding-right: 55px;
+  }
+  .down-header {
+    justify-content: left;
+  }
+  .list_nav__content {
+    padding: 0 50px;
+  }
 }
-.sub .sub-container {
-    display: flex;
-    flex-direction: column;
-    width: 10%;
-    padding: 0 17px;
+@media screen and (min-width: 1440px) {
+  .down-header .title {
+    padding-right: 150px;
+  }
+  .list_nav__content {
+    padding: 0 60px;
+  }
 }
 
-.sub-container .sub-title {
-    color: black;
-    font-size: 16px;
-    font-weight: 600;
-    border-bottom: 2px black solid;
+.menu-icon {
+  position: absolute;
+  left: 10px;
+  top: 60px;
+  z-index: 100;
+}
+
+.ti-menu {
+  font-size: 24px;
 }
