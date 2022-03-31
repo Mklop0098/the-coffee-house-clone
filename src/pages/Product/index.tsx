@@ -2,19 +2,22 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProductItem } from "../../components/ProductItem";
 import { products } from "../../data/product";
-import { Product } from "../../types";
+import { Product, ProductSize, ProductToping } from "../../types";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { ButtonReact } from "../../components/Button";
+import { Button } from "../../components/Button";
 import "./style.css";
+import { ExpandableParagraph } from "../../components/ExpandableParagraph";
 import { getProductById } from "../../api/product";
-
-// type ProductPageProps = {};
+import { Breadcrumbs } from "../../components/Breadcrumbs";
+import { numberFormat, formatCurrency } from "../../utils";
+import Slider, { Settings } from "react-slick";
 
 export const ProductPage = () => {
   const match = useParams<{ id: string }>();
 
   const [product, setProduct] = useState<Product>();
-  const [showFullStory, setShowFullStory] = useState(false);
+  const [selectedSize, setSelectedSize] = useState<ProductSize>();
+  const [selectedTopping, setSelectedTopping] = useState<ProductToping>();
 
   useEffect(() => {
     const response = getProductById(match.id);
@@ -24,91 +27,147 @@ export const ProductPage = () => {
     setProduct(response.data);
   }, [match.id]);
 
-  const handleShowStory = () => {
-    setShowFullStory(!showFullStory);
+  const handleSelectSize = (size: ProductSize) => {
+    if (selectedSize) {
+      if (selectedSize.name === size.name) {
+        setSelectedSize(undefined);
+      } else {
+        setSelectedSize(size);
+      }
+    } else {
+      setSelectedSize(size);
+    }
   };
 
-  console.log(product, products);
-
+  const handleSelectTopping = (topping: ProductToping) => {
+    if (!selectedTopping) {
+      setSelectedTopping(topping);
+    } else if (selectedTopping.id === topping.id) {
+      setSelectedTopping(undefined);
+    } else {
+      setSelectedTopping(topping);
+    }
+  };
+  const settings: Settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  };
   return (
     <div className="container">
+      <Breadcrumbs productType={product?.productType} name={product?.name} />
       <div className="container__item">
         <div className="carousel">
-          <img src={product?.thumbnails[0]} alt="" />
+          <Slider {...settings}>
+            {product?.thumbnails.map((thumbnail) => (
+              <img src={thumbnail} alt="" />
+            ))}
+          </Slider>
         </div>
         <div className="item-deliver">
           <h4>{product?.name}</h4>
-          <span>{product?.price}</span>
-          <div className="item-button">
-            <ButtonReact type={1} name="Đặt giao tận nơi" />
-            {/* <button
-              style={{
-                backgroundColor: "#EA8025",
-                width: "100%",
-                height: "45px",
-                color: "white",
-                fontSize: "18px",
-                borderRadius: "none",
-                border: "none",
-              }}
-            >
-              
-            </button> */}
-            <button
-              style={{
-                backgroundColor: "#fff7e6",
-                width: "48%",
-                height: "45px",
-                color: "#EA8025",
-                fontSize: "18px",
-                borderRadius: "none",
-                border: "none",
-              }}
-            >
-              Mua tại cửa hàng
-            </button>
-            <button
-              style={{
-                backgroundColor: "#fff7e6",
-                width: "48%",
-                height: "45px",
-                color: "#EA8025",
-                fontSize: "18px",
-                borderRadius: "none",
-                border: "none",
-              }}
-            >
-              Mua mang đi
-            </button>
+          <div className="product-price">
+            <span>
+              {formatCurrency(
+                (product?.discountPrice || product?.price || 0) +
+                  (selectedSize?.extraPrice || 0) +
+                  (selectedTopping?.price || 0)
+              )}
+            </span>
+            <del>{formatCurrency(product?.discountPrice)}</del>
+            <p>
+              {product?.discountPercent &&
+                product.discountPercent.toLocaleString("en-US", {
+                  style: "percent",
+                  minimumFractionDigits: 0,
+                })}
+            </p>
+          </div>
+
+          {product?.size ? (
+            <div className="item-size">
+              <p>Kích thước</p>
+              <div className="size-button">
+                {product?.size?.map((size) => (
+                  <div>
+                    <Button
+                      onClick={() => handleSelectSize(size)}
+                      active={selectedSize?.name === size.name}
+                      type="outline"
+                      text={`${size.name} ${
+                        size.extraPrice
+                          ? "+ " + formatCurrency(size.extraPrice)
+                          : ""
+                      }`}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+          {product?.toppings ? (
+            <div className="item-topping">
+              <p>Topping</p>
+              <div className="topping-button">
+                {product?.toppings?.map((topping) => (
+                  <div>
+                    <Button
+                      onClick={() => handleSelectTopping(topping)}
+                      type="outline"
+                      text={
+                        topping.name + " + " + formatCurrency(topping.price)
+                      }
+                      active={selectedTopping?.id === topping.id}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+
+          <Button
+            type="contained"
+            borderRadius={10}
+            color="primary"
+            bold
+            text="Đặt giao tận nơi"
+          />
+          <div className="flex w-100">
+            <Button
+              type="text"
+              borderRadius={10}
+              color="secondary"
+              text="Mua tại cửa hàng"
+            />
+            <Button
+              type="text"
+              borderRadius={10}
+              color="secondary"
+              text="Mua mang đi"
+            />
           </div>
         </div>
       </div>
-      <div className="inform-story">
+      <div className="paragraph-container">
         <div className="information">
-          <h4>Thông tin</h4>
-          <p>{product?.information}</p>
+          <h4>Thông Tin</h4>
+          <ExpandableParagraph paragraphs={product?.information} />
         </div>
         <div className="story">
-          <div className={showFullStory ? "story-full" : "story-short"}>
-            <h4>Câu chuyện</h4>
-            {/* <ExpandableParagraph paragraph={""} height={220} /> */}
-            <span>{product?.story.topic}</span>
-            <span>{product?.story.shortDesc}</span>
-            {product?.story.content.map((content) => (
-              <span>{content}</span>
-            ))}
-          </div>
-          <span
-            style={{
-              fontSize: "16px",
-              color: "rgb(234 128 37)",
-            }}
-            onClick={handleShowStory}
-          >
-            {showFullStory ? "Ẩn bớt" : "Xem thêm"}
-          </span>
+          <h4>Câu Chuyện</h4>
+          <ExpandableParagraph paragraphs={product?.story} />
         </div>
       </div>
+      {/*  */}
       <div className="concem-same-item">
         <h4>Sản phẩm liên quan</h4>
         <div className="same-item">

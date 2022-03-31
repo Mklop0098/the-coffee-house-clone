@@ -1,17 +1,38 @@
-.contained-hover {
-  width: 85%;
-  background-color: #ea8025;
+.btn {
+  font-size: 18px;
+  font-weight: 500;
   border: none;
-  color: #fff7e6;
-  height: 44px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 10px;
+  /* flex: 1; */
 }
 
-.contained-hover:hover {
+.btn--primary {
+  background-color: #ea8025;
+  border: 1px #ea8025 solid;
+  color: #fff7e6;
+}
+
+.btn--primary.btn--hover:hover {
   background-color: #fff7e6;
   border: 2px #ea8025 solid;
   color: #ea8025;
-  cursor: pointer;
+}
+
+.btn--secondary {
+  background-color: #fff7e6;
+  color: #ea8025;
+}
+
+.btn--outline {
+  background-color: rgb(255, 255, 255);
+  border: 1px rgba(0, 0, 0, 0.247) solid;
+  color: rgba(0, 0, 0, 0.801);
+  height: 44px;
+  font-size: 18px;
+}
+
+.btn--bold {
+  font-weight: 600;
 }

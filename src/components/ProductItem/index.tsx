@@ -16,10 +16,19 @@ export const ProductItem: React.FC<ProductItemProps> = (props) => {
       <a href={`/product/${product.id}`}>
         <h3 className="product-item__name">{product.name}</h3>
       </a>
-      <span className="product-item__price">{product.price}</span>
-      {product.discountPrice && (
-        <span className="product-item__discount">{product.discountPrice}</span>
-      )}
+      <div className="product-price">
+        <span className="product-item__price">
+          {product.price.toLocaleString("vi-VN", {
+            style: "currency",
+            currency: "VND",
+          })}
+        </span>
+        {/* {product.discountPrice && (
+          <span className="product-item__discount">
+            {product.discountPrice}
+          </span>
+        )} */}
+      </div>
     </div>
   );
 };

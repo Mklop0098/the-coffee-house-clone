@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Blog, BlogTopic } from "../../types";
 import { blogs as fakeBlogs, blogTopics as fakeBlogTopics } from "../../data";
 import "./style.css";
 import { BlogItem } from "./BlogItem";
+import { Blog, BlogTopic } from "../../types";
 
 export const BlogSection: React.FC = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);

@@ -1,5 +1,5 @@
 
-import { BrandContents } from "../types"
+import { BrandContents } from "../components/Brand"
 
 export const brands: BrandContents[] = [
     {

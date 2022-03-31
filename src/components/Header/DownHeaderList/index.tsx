@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
-import { DownHeaderTopic } from "../../../types";
 import { downHeaderTopics as fakeDownHeaderTopics } from "../../../data";
 import { Link } from "react-router-dom";
+
+export type DownHeaderTopic = {
+  id: string;
+  title: string;
+  link: string;
+};
 
 export const DownHeaderSection: React.FC = () => {
   const [downheaderTopics, setDownHeaderTopics] = useState<DownHeaderTopic[]>(

@@ -1,6 +1,18 @@
 import { link } from "fs";
-import {DownHeaderTopic, UpHeaderTopic } from "../types";
 import { createUniqueId } from "../utils";
+
+
+export type UpHeaderTopic = {
+    img: string
+    content: string
+
+}
+export type DownHeaderTopic = {
+    id: string
+    title: string
+    link: string
+}
+
 
 const caphe = createUniqueId()
 const tra = createUniqueId()

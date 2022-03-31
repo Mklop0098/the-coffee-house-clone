@@ -1,0 +1,21 @@
+.breadcrumb {
+  display: flex;
+  flex-direction: row;
+}
+
+.breadcrumb p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.breadcrumb a {
+  color: black;
+  font-size: 16px;
+}
+
+.breadcrumb a:hover {
+  color: rgb(237 122 22);
+}
+.breadcrumb > a {
+  padding-right: 20px;
+}

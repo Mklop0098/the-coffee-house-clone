@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./style.css";
 import { Carousel, CarouselItem } from "../Carousel";
-import { ButtonReact } from "../Button";
+import { Button } from "../Button";
 
 const button = {
   title: "Tìm hiểu thêm",

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProductItem } from "../../components/ProductItem";
-import { teaProducts } from "../../data/product";
+import { products } from "../../data/product";
 import { Product } from "../../types";
 import "./style.css";
 
@@ -13,7 +13,7 @@ export const TeaPage = () => {
   console.log(match);
 
   useEffect(() => {
-    setProductList(teaProducts);
+    setProductList(products);
   }, []);
 
   return (
