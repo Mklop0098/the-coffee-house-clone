@@ -14,7 +14,7 @@ export const ButtonReact: React.FC<Button> = (props) => {
       ) : buttonType.type === 3 ? (
         <button></button>
       ) : (
-        <button></button>
+        <button className=""></button>
       )}
     </div>
   );
